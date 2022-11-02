@@ -36,15 +36,10 @@ jobs:
         run: sudo apt update
       - name: install
         run: sudo apt install -y kubectl
-      - name: copy file
-        uses: canastro/copy-file-action@0.0.2
-        with:
-          source: "../../deployment.yaml"
-          target: "deployment.yaml"
       - name: Set Kubernetes Context
         uses: azure/k8s-set-context@v1
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }} # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
       - name: kubectl
-        run: kubectl apply -f deployment.yaml
+        run: kubectl apply -f ./deployment.yaml
