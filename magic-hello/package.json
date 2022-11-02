@@ -1,0 +1,12 @@
+{
+  "name": "magic-hello",
+  "version": "0.1.0",
+  "description": "A vanilla HTML + JS app with Magic passwordless authentication.",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -a 0.0.0.0 --proxy http://0.0.0.0:8080? -o /"
+  },
+  "dependencies": {
+    "http-server": "^0.12.3"
+  }
+}
