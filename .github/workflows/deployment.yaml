@@ -42,5 +42,9 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }} # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
+      - name: delete
+        run: kubectl delete pod magic-pod      
       - name: kubectl
         run: kubectl apply -f deployment.yaml
+      - name: delete
+        
