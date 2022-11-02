@@ -19,7 +19,7 @@ jobs:
         run: docker build . --file Dockerfile -t "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest"
       - name: Push user service docker image
         run: docker push "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest"
-deployment:
+  deployment:
     needs: [create-user-image]
     runs-on: ubuntu-latest
     steps:
