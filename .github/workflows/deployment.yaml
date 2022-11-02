@@ -42,4 +42,4 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }} # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
       - name: kubectl
-        run: kubectl apply -f ./deployment.yaml
+        run: kubectl apply -f deployment.yaml
