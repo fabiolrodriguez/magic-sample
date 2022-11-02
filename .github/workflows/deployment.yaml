@@ -36,8 +36,11 @@ jobs:
         run: sudo apt update
       - name: install
         run: sudo apt install -y kubectl
-      - name: copy
-        run: cp ${GITHUB_WORKSPACE}/../deployment.yaml .
+      - name: copy file
+        uses: canastro/copy-file-action@0.0.2
+        with:
+          source: "deployment.yaml"
+          target: "deployment.yaml"
       - name: Set Kubernetes Context
         uses: azure/k8s-set-context@v1
         with:
