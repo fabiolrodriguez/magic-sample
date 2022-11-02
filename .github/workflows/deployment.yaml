@@ -45,6 +45,4 @@ jobs:
       - name: delete
         run: kubectl delete pod magic-pod      
       - name: kubectl
-        run: kubectl apply -f deployment.yaml
-      - name: delete
-        
+        run: kubectl apply -f deployment.yaml        
