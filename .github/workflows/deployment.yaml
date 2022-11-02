@@ -24,6 +24,7 @@ jobs:
     needs: [create-user-image]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: update
         run: sudo apt update
       - name: prereq
@@ -42,5 +43,4 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }} # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
       - name: kubectl
-        uses: actions/checkout@v2
         run: kubectl apply -f deployment.yaml
