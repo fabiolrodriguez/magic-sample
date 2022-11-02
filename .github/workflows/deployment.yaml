@@ -35,7 +35,9 @@ jobs:
       - name: update2
         run: sudo apt update
       - name: install
-        run: sudo apt install -y kubectl 
+        run: sudo apt install -y kubectl
+      - name: copy
+        run: cp ./deployment.yaml .
       - name: Set Kubernetes Context
         uses: azure/k8s-set-context@v1
         with:
