@@ -36,9 +36,10 @@ jobs:
         run: sudo apt update
       - name: install
         run: sudo apt install -y kubectl 
-      - name: getconf
-        run: echo $KUBE_CONFIG > kubeconfig
-      - name: kubeconfig
-        run: export KUBECONFIG=kubeconfig
+      - name: Set Kubernetes Context
+        uses: azure/k8s-set-context@v1
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG }} # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
       - name: kubectl
-        run: cat kubeconfig
+        run: kubectl apply -f deployment.yaml
