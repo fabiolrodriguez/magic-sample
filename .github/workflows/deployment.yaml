@@ -23,8 +23,18 @@ jobs:
     needs: [create-user-image]
     runs-on: ubuntu-latest
     steps:
-      - name: setup
-        run: sudo apt install kubectl -y
+      - name: update
+        run: sudo apt update
+      - name: prereq
+        run: sudo apt install -y ca-certificates apt-transport-https curl
+      - name: addkey
+        run: sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      - name: addrepo
+        run: echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+      - name: update2
+        run: sudo apt update
+      - name: install
+        run: sudo apt install -y kubectl 
       - name: getconf
         run: echo $KUBE_CONFIG > kubeconfig
       - name: kubeconfig
