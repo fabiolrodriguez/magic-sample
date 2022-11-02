@@ -23,12 +23,11 @@ jobs:
     needs: [create-user-image]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: setup
+        run: apt install kubectl -y
       - name: getconf
         run: echo $KUBE_CONFIG > kubeconfig
       - name: kubeconfig
         run: export KUBECONFIG=$PWD/kubeconfig
       - name: kubectl
-        uses: ameydev/gke-kubectl-action@master
-        with:
-          args: apply -f deployment.yaml
+        run: kubectl apply -f deployment.yaml
