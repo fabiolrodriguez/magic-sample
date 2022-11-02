@@ -41,4 +41,4 @@ jobs:
       - name: kubeconfig
         run: export KUBECONFIG=kubeconfig
       - name: kubectl
-        run: kubectl apply -f deployment.yaml
+        run: cat kubeconfig
