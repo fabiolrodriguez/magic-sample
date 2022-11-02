@@ -37,7 +37,7 @@ jobs:
       - name: install
         run: sudo apt install -y kubectl
       - name: copy
-        run: cp ${GITHUB_WORKSPACE}/deployment.yaml .
+        run: cp ${GITHUB_WORKSPACE}/../deployment.yaml .
       - name: Set Kubernetes Context
         uses: azure/k8s-set-context@v1
         with:
