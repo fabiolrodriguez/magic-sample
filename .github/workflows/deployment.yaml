@@ -12,7 +12,7 @@ jobs:
   create-user-image:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Docker login
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
@@ -24,7 +24,7 @@ jobs:
     needs: [create-user-image]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: update
         run: sudo apt update
       - name: prereq
