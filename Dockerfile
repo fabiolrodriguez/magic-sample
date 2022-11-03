@@ -1,4 +1,4 @@
-FROM node:18-alpine3.14 
+FROM arm32v7/node
 RUN npm i -g typescript ts-node
 WORKDIR /app
 COPY ./magic-hello /app
