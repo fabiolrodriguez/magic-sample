@@ -29,7 +29,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm/v7
           push: true
-          tags: $DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest
+          tags: fabiolrodriguez/magic-hello:latest
       # - name: Build user service docker image
       #   run: docker build . --file Dockerfile -t "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest"
       # - name: Push user service docker image
