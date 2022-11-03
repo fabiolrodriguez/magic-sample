@@ -18,6 +18,8 @@ jobs:
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - name: Build user service docker image
         run: |
+          docker buildx create --use --name mybuild node-amd64
+          docker buildx create --append --name mybuild node-arm64
           docker buildx build --platform linux/amd64,linux/arm64 . --file Dockerfile -t "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest"
       - name: Push user service docker image
         run: docker push "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest"
