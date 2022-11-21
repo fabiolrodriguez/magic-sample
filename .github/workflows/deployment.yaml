@@ -59,4 +59,12 @@ jobs:
       - name: delete
         run: kubectl delete pod magic-pod      
       - name: kubectl
-        run: kubectl apply -f deployment.yaml        
+        run: kubectl apply -f deployment.yaml  
+      - name: pushmetric
+        uses: frankie567/grafana-annotation-action@v1.0.2
+        with:
+          apiHost: https://fabiolrodriguez.grafana.net
+          apiToken: ${{ secrets.GRAFANA_API_TOKEN }}
+          text: Deployment of ${{ github.sha }}
+          dashboardId: 1
+          tags: deployment,github      
