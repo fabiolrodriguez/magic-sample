@@ -66,5 +66,5 @@ jobs:
           apiHost: https://fabiolrodriguez.grafana.net
           apiToken: ${{ secrets.GRAFANA_API_TOKEN }}
           text: Deployment of ${{ github.sha }}
-          dashboardId: 1
+          dashboardId: iVcSTeyGz
           tags: deployment,github      
