@@ -61,10 +61,9 @@ jobs:
       - name: kubectl
         run: kubectl apply -f deployment.yaml  
       - name: pushmetric
-        uses: frankie567/grafana-annotation-action@v1.0.2
+        uses: danieloneilldazn/grafana-annotation-action@v0
         with:
-          apiHost: https://fabiolrodriguez.grafana.net
-          apiToken: ${{ secrets.GRAFANA_API_TOKEN }}
-          text: Deployment of ${{ github.sha }}
-          dashboardId: iVcSTeyGz
-          tags: deployment,github      
+          grafanaHost: https://fabiolrodriguez.grafana.net
+          grafanaToken: ${{ secrets.GRAFANA_API_TOKEN }}
+          grafanaText: Deployment of ${{ github.sha }}
+          grafanaTags: deployment,github      
