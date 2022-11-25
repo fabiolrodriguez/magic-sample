@@ -8,6 +8,7 @@ env:
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
   PRODUCT_REPO_NAME: ${{secrets.PRODUCT_REPO_NAME}}
   KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
+  GRAFANA_TOKEN: ${{secrets.GRAFANA_API_TOKEN}}
 jobs:
   create-user-image:
     runs-on: ubuntu-latest
@@ -63,7 +64,7 @@ jobs:
       - name: pushmetric
         uses: danieloneilldazn/grafana-annotation-action@v0
         with:
-          grafanaHost: https://fabiolrodriguez.grafana.net
-          grafanaToken: ${{ secrets.GRAFANA_API_TOKEN }}
+          grafanaHost: "https://fabiolrodriguez.grafana.net"
+          grafanaToken: $GRAFANA_TOKEN
           grafanaText: Deployment of ${{ github.sha }}
           grafanaTags: deployment,github      
